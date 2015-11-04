@@ -1,0 +1,46 @@
+#!/bin/bash
+#Alex Bustos
+
+if [ $# -ne 2 ] 
+	then
+		echo "Usage: you need two files as arguments..." 1>&2
+		exit 1	
+fi
+
+ls -lh "$1" "$2"
+
+if [ -f "$1" ]
+	then
+		
+		if [ -r "$1" ] 
+			then 
+				echo "argument 1 is a readable file"
+
+			else
+				echo "argument 1 is not a readable file"
+		fi
+	else
+		echo "The first argument is not a file"
+fi	
+
+if [ -f "$2" ]
+	then 
+		if [ -r "$2" ] 
+			then 
+				echo "argument 2 is a readable file"
+			else
+				echo "argument 2 is not a readable file"
+		fi
+	else 
+		echo "The second argument is not a file"
+fi
+
+
+if diff "$1" "$2">/dev/null
+	then 
+		echo "same files"
+	else 
+		echo "different files"
+fi
+
+
